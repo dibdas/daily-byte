@@ -59,3 +59,23 @@ function findLetter(str1, str2) {
   }
 }
 console.log(findLetter("foobar", "barfoot"));
+
+// This question is asked by Google. Given two integer arrays, return their intersection.
+// Note: the intersection is the set of elements that are common to both arrays.
+
+// Ex: Given the following arrays...
+
+// nums1 = [2, 4, 4, 2], nums2 = [2, 4], return [2, 4]
+// nums1 = [1, 2, 3, 3], nums2 = [3, 3], return [3]
+// nums1 = [2, 4, 6, 8], nums2 = [1, 3, 5, 7], return []
+
+function intersectionNumbers(arr) {
+  let map1 = {};
+  const arr1 = [];
+  for (let a of arr) {
+    map1[a] = map1[a] ? map1[a] + 1 : 1;
+    if (map1[a] > 1) arr1.push(a);
+  }
+  return arr1;
+}
+console.log(intersectionNumbers([2, 4, , 2, 4, 8, 8]));
