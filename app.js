@@ -81,4 +81,9 @@ function twoStrings(str1, str2) {
   console.log(map1);
   return arr1;
 }
-console.log(twoStrings("copper coffee pot", "hot coffee pot"));
+console.log(
+  "result",
+  twoStrings("the tortoise beat the haire", "the tortoise lost to the haire")
+);
+console.log("result", twoStrings("the quick", "brown fox"));
+console.log("result", twoStrings("copper coffee pot", "hot coffee pot"));
