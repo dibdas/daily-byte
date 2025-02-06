@@ -31,35 +31,6 @@ console.log(firstUniqueCharater("abcabd"));
 // s = "ide", t = "idea", return 'a'
 // s = "coding", t "ingcod", return ''
 
-function findLetter(str1, str2) {
-  const str11 = str1.split(",").join("");
-  const str22 = str2.split(",").join("");
-  let map1 = {},
-    map2 = {};
-  console.log(str11, str22);
-  for (let a of str11) {
-    map1[a] = map1[a] ? map1[a] + 1 : 1;
-  }
-  for (let a of str22) {
-    map2[a] = map2[a] ? map2[a] + 1 : 1;
-  }
-  let max = {},
-    min = {};
-
-  str1.length > str2.length
-    ? ((max = map1), (min = map2))
-    : ((max = map2), (min = map1));
-
-  console.log(map1, map2);
-
-  for (let s in max) {
-    if (max[s] !== min[s]) {
-      return s;
-    }
-  }
-}
-console.log(findLetter("foobar", "barfoot"));
-
 // This question is asked by Google. Given two integer arrays, return their intersection.
 // Note: the intersection is the set of elements that are common to both arrays.
 
@@ -69,13 +40,45 @@ console.log(findLetter("foobar", "barfoot"));
 // nums1 = [1, 2, 3, 3], nums2 = [3, 3], return [3]
 // nums1 = [2, 4, 6, 8], nums2 = [1, 3, 5, 7], return []
 
-function intersectionNumbers(arr) {
+// function intersectionNumbers(arr) {
+//   let map1 = {};
+//   const arr1 = [];
+//   for (let a of arr) {
+//     map1[a] = map1[a] ? map1[a] + 1 : 1;
+//     if (map1[a] > 1) arr1.push(a);
+//   }
+//   return arr1;
+// }
+// console.log(intersectionNumbers([2, 4, , 2, 4, 8, 8]));
+
+// This question is asked by Amazon. Given two strings representing sentences, return the words that are not common to both
+// strings (i.e. the words that only appear in one of the sentences).
+// You may assume that each sentence is a sequence of words (without punctuation) correctly separated using space characters.
+// Ex: given the following strings...
+
+// sentence1 = "the quick", sentence2 = "brown fox", return ["the", "quick", "brown", "fox"]
+// sentence1 = "the tortoise beat the haire", sentence2 = "the tortoise lost to the haire", return ["beat", "to", "lost"]
+// sentence1 = "copper coffee pot", sentence2 = "hot coffee pot", return ["copper", "hot"]
+
+function twoStrings(str1, str2) {
+  const str11 = str1.split(" ");
+  let arr1 = [];
+  console.log(str11);
+  const str22 = str2.split(" ");
+  console.log(str22);
+  console.log(JSON.stringify(str11) === JSON.stringify(str22));
+  if (JSON.stringify(str11) === JSON.stringify(str22)) return str11;
   let map1 = {};
-  const arr1 = [];
-  for (let a of arr) {
-    map1[a] = map1[a] ? map1[a] + 1 : 1;
-    if (map1[a] > 1) arr1.push(a);
+  let str33 = [];
+  str33 = str11.concat(str22);
+  console.log("str33", str33);
+  for (let g of str33) {
+    map1[g] = map1[g] ? map1[g] + 1 : 1;
   }
+  for (let x in map1) {
+    if (map1[x] == 1) arr1.push(x);
+  }
+  console.log(map1);
   return arr1;
 }
-console.log(intersectionNumbers([2, 4, , 2, 4, 8, 8]));
+console.log(twoStrings("copper coffee pot", "hot coffee pot"));
