@@ -87,3 +87,60 @@ console.log(
 );
 console.log("result", twoStrings("the quick", "brown fox"));
 console.log("result", twoStrings("copper coffee pot", "hot coffee pot"));
+
+function equalbrackets(str) {
+  console.log(str.split("").reverse().join(""));
+  return str.split("").reverse().join() == str.split("").join();
+}
+console.log(equalbrackets("(){}[]"));
+
+// This question is asked by Amazon. Given two strings s and t, which represents a sequence of keystrokes, where # denotes a backspace, return whether or not the sequences produce the same result.
+
+// Ex: Given the following strings...
+
+// s = "ABC#", t = "CD##AB", return true
+// s = "como#pur#ter", t = "computer", return true
+// s = "cof#dim#ng", t = "code", return false
+
+function backSpaceCompare(str1, str2) {
+  console.log(str1, str2);
+  return editString(str1) === editString(str2);
+}
+
+function editString(str) {
+  let arr = [];
+  for (let a of str) {
+    if (a === "#") {
+      arr.pop();
+    } else {
+      arr.push(a);
+    }
+  }
+  console.log(arr);
+  return arr.join("");
+}
+console.log(backSpaceCompare("ABC#", "CD##AB"));
+console.log(backSpaceCompare("como#pur#ter", "computer"));
+console.log(backSpaceCompare("cof#dim#ng", "code"));
+console.log(backSpaceCompare("abc#d", "abd")); // true
+console.log(backSpaceCompare("abc##", "a#")); // true
+console.log(backSpaceCompare("a##c", "#a#c")); // true
+console.log(backSpaceCompare("a#c", "b")); // false
+console.log(backSpaceCompare("###", "####")); // true (both become empty)
+console.log(backSpaceCompare("x#y#z#", "a#b#c#")); // true (both become empty)
+console.log(backSpaceCompare("abcd##e#", "abf#d#e#")); // true
+console.log(backSpaceCompare("##a##b", "###b")); // true
+console.log(backSpaceCompare("abc###", "xyz###")); // true (both become empty)
+console.log(backSpaceCompare("a###b", "b")); // true
+console.log(backSpaceCompare("xyz#", "xy")); // true
+console.log(backSpaceCompare("abc#d##c", "a#c")); // true
+console.log(backSpaceCompare("aa#bb#cc#", "abc#")); // false
+console.log(backSpaceCompare("abc#", "abcd#")); // true
+console.log(backSpaceCompare("a##bc##d", "d")); // true
+console.log(backSpaceCompare("abcd####", "wxyz####")); // true (both become empty)
+console.log(backSpaceCompare("##abc#d##", "wxyz####")); // true
+console.log(backSpaceCompare("a#b#c#d#", "####")); // true (both become empty)
+console.log(backSpaceCompare("x#y##z#", "z##")); // true
+console.log(backSpaceCompare("back##space", "backspace")); // true
+console.log(backSpaceCompare("back###", "b#")); // true (both become empty)
+console.log(backSpaceCompare("abc###", "xyz##")); // false (one is empty, one is "x")
