@@ -122,25 +122,67 @@ function editString(str) {
 console.log(backSpaceCompare("ABC#", "CD##AB"));
 console.log(backSpaceCompare("como#pur#ter", "computer"));
 console.log(backSpaceCompare("cof#dim#ng", "code"));
-console.log(backSpaceCompare("abc#d", "abd")); // true
-console.log(backSpaceCompare("abc##", "a#")); // true
-console.log(backSpaceCompare("a##c", "#a#c")); // true
-console.log(backSpaceCompare("a#c", "b")); // false
-console.log(backSpaceCompare("###", "####")); // true (both become empty)
-console.log(backSpaceCompare("x#y#z#", "a#b#c#")); // true (both become empty)
-console.log(backSpaceCompare("abcd##e#", "abf#d#e#")); // true
-console.log(backSpaceCompare("##a##b", "###b")); // true
-console.log(backSpaceCompare("abc###", "xyz###")); // true (both become empty)
-console.log(backSpaceCompare("a###b", "b")); // true
-console.log(backSpaceCompare("xyz#", "xy")); // true
-console.log(backSpaceCompare("abc#d##c", "a#c")); // true
-console.log(backSpaceCompare("aa#bb#cc#", "abc#")); // false
-console.log(backSpaceCompare("abc#", "abcd#")); // true
-console.log(backSpaceCompare("a##bc##d", "d")); // true
-console.log(backSpaceCompare("abcd####", "wxyz####")); // true (both become empty)
-console.log(backSpaceCompare("##abc#d##", "wxyz####")); // true
-console.log(backSpaceCompare("a#b#c#d#", "####")); // true (both become empty)
-console.log(backSpaceCompare("x#y##z#", "z##")); // true
-console.log(backSpaceCompare("back##space", "backspace")); // true
-console.log(backSpaceCompare("back###", "b#")); // true (both become empty)
-console.log(backSpaceCompare("abc###", "xyz##")); // false (one is empty, one is "x")
+// console.log(backSpaceCompare("abc#d", "abd")); // true
+// console.log(backSpaceCompare("abc##", "a#")); // true
+// console.log(backSpaceCompare("a##c", "#a#c")); // true
+// console.log(backSpaceCompare("a#c", "b")); // false
+// console.log(backSpaceCompare("###", "####")); // true (both become empty)
+// console.log(backSpaceCompare("x#y#z#", "a#b#c#")); // true (both become empty)
+// console.log(backSpaceCompare("abcd##e#", "abf#d#e#")); // true
+// console.log(backSpaceCompare("##a##b", "###b")); // true
+// console.log(backSpaceCompare("abc###", "xyz###")); // true (both become empty)
+// console.log(backSpaceCompare("a###b", "b")); // true
+// console.log(backSpaceCompare("xyz#", "xy")); // true
+// console.log(backSpaceCompare("abc#d##c", "a#c")); // true
+// console.log(backSpaceCompare("aa#bb#cc#", "abc#")); // false
+// console.log(backSpaceCompare("abc#", "abcd#")); // true
+// console.log(backSpaceCompare("a##bc##d", "d")); // true
+// console.log(backSpaceCompare("abcd####", "wxyz####")); // true (both become empty)
+// console.log(backSpaceCompare("##abc#d##", "wxyz####")); // true
+// console.log(backSpaceCompare("a#b#c#d#", "####")); // true (both become empty)
+// console.log(backSpaceCompare("x#y##z#", "z##")); // true
+// console.log(backSpaceCompare("back##space", "backspace")); // true
+// console.log(backSpaceCompare("back###", "b#")); // true (both become empty)
+// console.log(backSpaceCompare("abc###", "xyz##")); // false (one is empty, one is "x")
+
+// This question is asked by Facebook. Given a string s containing only lowercase letters, continuously remove adjacent characters that are the same and return the result.
+
+// Ex: Given the following strings...
+
+// s = "abccba", return ""
+// s = "foobar", return "fbar"
+// s = "abccbefggfe", return "a"
+function removeDuplictaes(str) {
+  let map1 = {};
+  let arr = [];
+  for (let s of str) {
+    map1[s] = map1[s] ? map1[s] + 1 : 1;
+  }
+  for (let s in map1) {
+    if (map1[s] == 1) {
+      arr.push(s);
+    }
+  }
+  console.log(arr);
+  return arr.join("") || "";
+}
+console.log(removeDuplictaes("abccba"));
+console.log(removeDuplictaes("foobar"));
+console.log(removeDuplictaes("abccbefggfe"));
+
+function removeDuplictaes2(str) {
+  let arr = [];
+  for (let s of str) {
+    if (arr.length > 0 && s == arr[arr.length - 1]) {
+      arr.pop();
+    } else {
+      arr.push(s);
+    }
+  }
+  console.log(arr);
+  return arr.join("");
+}
+
+console.log(removeDuplictaes2("abccba"));
+console.log(removeDuplictaes2("foobar"));
+console.log(removeDuplictaes2("abccbefggfe"));
