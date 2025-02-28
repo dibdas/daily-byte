@@ -186,3 +186,50 @@ function removeDuplictaes2(str) {
 console.log(removeDuplictaes2("abccba"));
 console.log(removeDuplictaes2("foobar"));
 console.log(removeDuplictaes2("abccbefggfe"));
+
+function movezeros(arr) {
+  let noz = 0;
+  let arr1 = [];
+  for (let s = 0; s < arr.length; s++) {
+    console.log(arr[s]);
+    if (arr[s] !== 0) {
+      noz++;
+      arr1.push(arr[s]);
+    }
+  }
+  arr1.push(...Array(noz).fill(0));
+  console.log(noz);
+  console.log(arr1);
+  return arr1;
+}
+
+console.log(movezeros([7, 0, 3, 0, 4]));
+
+class TreeNode {
+  constructor(val, left = null, right = null) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}
+function searchBST(root, val) {
+  if (root.val === val) {
+    return root;
+  }
+  if(root.val!==val){return null}
+  return val < root.val
+    ? searchBST(root.left, val)
+    : searchBST(root.right, val);
+}
+// const root = new TreeNode(3, new TreeNode(1), new TreeNode(5));
+const root = new TreeNode(
+  7,
+  new TreeNode(5),
+  new TreeNode(9, new TreeNode(8), new TreeNode(10))
+);
+// const root = new TreeNode(
+//   8,
+//   new TreeNode(6),new TreeNode(9))
+
+console.log("root", root);
+console.log(searchBST(root, 9));
